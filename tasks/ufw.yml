@@ -1,0 +1,41 @@
+---
+
+- name: Enable IPsec traffic udp/500
+  ufw:
+    rule: allow
+    port: '500'
+    proto: udp
+
+- name: Enable IPsec traffic udp/4500
+  ufw:
+    rule: allow
+    port: '4500'
+    proto: udp
+
+- name: Enable IPsec traffic esp
+  ufw:
+    rule: allow
+    proto: esp
+
+- name: Enable ipv4 forwarding
+  lineinfile:
+    path: /etc/ufw/sysctl.conf
+    regexp: "^.*net\/ipv4\/ip_forward=1$"
+    line: "net/ipv4/ip_forward=1"
+    state: present
+
+- name: Enable ipv6 default forwarding
+  lineinfile:
+    path: /etc/ufw/sysctl.conf
+    regexp: "^.*net\/ipv6\/conf\/default\/forwarding=1$"
+    line: "net/ipv6/conf/default/forwarding=1"
+    state: present
+
+- name: Enable ipv6 all forwarding
+  lineinfile:
+    path: /etc/ufw/sysctl.conf
+    regexp: "^.*net\/ipv6\/conf\/all\/forwarding=1$"
+    line: "net/ipv6/conf/all/forwarding=1"
+    state: present
+
+

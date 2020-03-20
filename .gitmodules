@@ -1,0 +1,6 @@
+[submodule "roles/ansible-sshd"]
+	path = roles/ansible-sshd
+	url = git@github.com:vpn-cedi-dev/ansible-sshd.git
+[submodule "roles/ansible-base"]
+	path = roles/ansible-base
+	url = git@github.com:vpn-cedi-dev/ansible-base.git

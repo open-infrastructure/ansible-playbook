@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  tasks:
+  - name: test connection
+    ping:
+
+  roles:
+  - ansible-base
+  - ansible-sshd
+
+- hosts: ipsec_gateways
+  roles:
+    - strongswan
+
+  tasks:
+    - name: Enable Firewall
+      include: ./tasks/ufw.yml

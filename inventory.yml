@@ -1,0 +1,7 @@
+all:
+  children:
+    ipsec_gateways:
+      hosts:
+        gw1:
+          ansible_host: gw1.vpn.dev.cedi.dev
+          ansible_user: root

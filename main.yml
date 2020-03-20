@@ -11,7 +11,7 @@
 
 - hosts: ipsec_gateways
   roles:
-    - strongswan
+    - ansible-strongswan
 
   tasks:
     - name: Enable Firewall

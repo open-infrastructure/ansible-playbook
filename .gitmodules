@@ -4,3 +4,6 @@
 [submodule "roles/ansible-base"]
 	path = roles/ansible-base
 	url = git@github.com:vpn-cedi-dev/ansible-base.git
+[submodule "roles/ansible-strongswan"]
+	path = roles/ansible-strongswan
+	url = git@github.com:vpn-cedi-dev/ansible-strongswan.git

@@ -1,4 +1,8 @@
 all:
+  hosts:
+    prometheus:
+      ansible_host: prometheus.vpn.dev.cedi.dev
+      ansible_user: root
   children:
     ipsec_gateways:
       hosts:

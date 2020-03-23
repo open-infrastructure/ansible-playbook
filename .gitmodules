@@ -7,3 +7,9 @@
 [submodule "roles/ansible-strongswan"]
 	path = roles/ansible-strongswan
 	url = git@github.com:vpn-cedi-dev/ansible-strongswan.git
+[submodule "roles/ansible-prometheus"]
+	path = roles/ansible-prometheus
+	url = git@github.com:cloudalchemy/ansible-prometheus.git
+[submodule "roles/ansible-node-exporter"]
+	path = roles/ansible-node-exporter
+	url = git@github.com:cloudalchemy/ansible-node-exporter.git

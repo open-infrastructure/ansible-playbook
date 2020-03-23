@@ -1,18 +1,32 @@
 ---
 
 - hosts: all
-  tasks:
-  - name: test connection
-    ping:
-
   roles:
   - ansible-base
   - ansible-sshd
+  - ansible-node-exporter
+
+  tasks:
+  - name: Enable node_exporter Port
+    ufw:
+      rule: allow
+      port: '9100'
+
 
 - hosts: ipsec_gateways
   roles:
     - ansible-strongswan
 
-  tasks:
-    - name: Enable Firewall
-      include: ./tasks/ufw.yml
+
+- hosts: prometheus
+  roles:
+  - ansible-prometheus
+  vars:
+    prometheus_web_external_url: "http://prometheus.vpn.dev.cedi.dev"
+    prometheus_targets:
+      node:
+      - targets:
+        - localhost:9100
+        - gw1.vpn.dev.cedi.dev:9100
+
+

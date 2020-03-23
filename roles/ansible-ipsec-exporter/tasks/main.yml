@@ -1,0 +1,10 @@
+---
+
+- name: Install Go
+  apt:
+    name: "golang"
+    state: present
+
+- name: Install ipsec_exporter
+  shell:
+    cmd: go get -u github.com/vpn-cedi-dev/ipsec_exporter

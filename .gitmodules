@@ -1,12 +1,12 @@
 [submodule "roles/ansible-sshd"]
 	path = roles/ansible-sshd
-	url = git@github.com:vpn-cedi-dev/ansible-sshd.git
+	url = git@github.com:open-infrastructure/ansible-base.git
 [submodule "roles/ansible-base"]
 	path = roles/ansible-base
-	url = git@github.com:vpn-cedi-dev/ansible-base.git
+	url = git@github.com:open-infrastructure/ansible-base.git
 [submodule "roles/ansible-strongswan"]
 	path = roles/ansible-strongswan
-	url = git@github.com:vpn-cedi-dev/ansible-strongswan.git
+	url = git@github.com:open-infrastructure/ansible-strongswan.git
 [submodule "roles/ansible-prometheus"]
 	path = roles/ansible-prometheus
 	url = git@github.com:cloudalchemy/ansible-prometheus.git

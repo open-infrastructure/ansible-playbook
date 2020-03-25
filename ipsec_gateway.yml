@@ -1,0 +1,6 @@
+---
+
+- hosts: ipsec_gateways
+  roles:
+    - ansible-strongswan
+

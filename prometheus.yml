@@ -1,0 +1,71 @@
+---
+
+- hosts: prometheus
+  roles:
+  - ansible-prometheus
+  - ansible-grafana
+
+  vars:
+    prometheus_web_external_url: "http://prometheus.open-infrastructure.de"
+    prometheus_targets:
+      node:
+      - targets:
+        - localhost:9100
+        - fsn1-gw1.vpn.open-infrastructure.de:9100
+        - de-bra-1.jitsi.rocks:9100
+        - de-wob-1.jitsi.rocks:9100
+        - de-fsn-1.jitsi.rocks:9100
+        - de-fsn-2.jitsi.rocks:9100
+        - de-nue-1.jitsi.rocks:9100
+        - de-nue-2.jitsi.rocks:9100
+        - fi-hel-2.jitsi.rocks:9100
+        - fi-hel-2.jitsi.rocks:9100
+        - nl-ams-1.jitsi.rocks:9100
+        - us-nyc-1.jitsi.rocks:9100
+        - gb-lon-1.jitsi.rocks:9100
+    grafana_auth:
+      anonymous:
+        org_name: "Open Infrastructure"
+        org_role: Viewer
+      basic:
+        enabled: true
+    grafana_security:
+      admin_user: admin
+      admin_password: grafanaSecureAdminPassword1234
+    # grafana_ldap:
+    #  servers:
+    #    host: 127.0.0.1
+    #    port: 389 # 636 for SSL
+    #    use_ssl: false
+    #    start_tls: false
+    #    ssl_skip_verify: false
+    #    root_ca_cert: /path/to/certificate.crt
+    #    bind_dn: "cn=admin,dc=grafana,dc=org"
+    #    bind_password: grafana
+    #    search_filter: "(cn=%s)" # "(sAMAccountName=%s)" on AD
+    #    search_base_dns:
+    #      - "dc=grafana,dc=org"
+    #    group_search_filter: "(&(objectClass=posixGroup)(memberUid=%s))"
+    #    group_search_base_dns:
+    #      - "ou=groups,dc=grafana,dc=org"
+    #    attributes:
+    #      name: givenName
+    #      surname: sn
+    #      username: sAMAccountName
+    #      member_of: memberOf
+    #      email: mail
+    #  group_mappings:
+    #    - name: Main Org.
+    #      id: 1
+    #      groups:
+    #        - group_dn: "cn=admins,ou=groups,dc=grafana,dc=org"
+    #          org_role: Admin
+    #        - group_dn: "cn=editors,ou=groups,dc=grafana,dc=org"
+    #          org_role: Editor
+    #        - group_dn: "*"
+    #          org_role: Viewer
+    #    - name: Alternative Org
+    #      id: 2
+    #      groups:
+    #        - group_dn: "cn=alternative_admins,ou=groups,dc=grafana,dc=org"
+    #          org_role: Admin

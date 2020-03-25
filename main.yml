@@ -1,32 +1,17 @@
 ---
 
-- hosts: all
-  roles:
-  - ansible-base
-  - ansible-sshd
-  - ansible-node-exporter
+- name: Call base playbook
+  import_playbook: ./base.yml
 
-  tasks:
-  - name: Enable node_exporter Port
-    ufw:
-      rule: allow
-      port: '9100'
+- name: Call jitsi monitoring playbook
+  import_playbook: ./jitsi_monitoring.yml
 
+- name: Call ipsec gateway playbook
+  import_playbook: ./ipsec_gateway.yml
 
-- hosts: ipsec_gateways
-  roles:
-    - ansible-strongswan
+- name: Call prometheus playbook
+  import_playbook: ./prometheus.yml
 
 
-- hosts: prometheus
-  roles:
-  - ansible-prometheus
-  vars:
-    prometheus_web_external_url: "http://prometheus.vpn.dev.cedi.dev"
-    prometheus_targets:
-      node:
-      - targets:
-        - localhost:9100
-        - gw1.vpn.dev.cedi.dev:9100
 
 

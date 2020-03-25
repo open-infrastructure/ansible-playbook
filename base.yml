@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  roles:
+  - ansible-base
+  - ansible-sshd
+  - ansible-node-exporter
+
+  tasks:
+  - name: Enable node_exporter Port
+    ufw:
+      rule: allow
+      port: '9100'
+

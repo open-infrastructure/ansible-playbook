@@ -1,0 +1,6 @@
+---
+
+- hosts: jitsi
+  roles:
+  - ansible-node-exporter
+

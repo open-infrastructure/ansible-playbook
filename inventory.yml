@@ -1,11 +1,46 @@
 all:
   hosts:
     prometheus:
-      ansible_host: prometheus.vpn.dev.cedi.dev
+      ansible_host: prometheus.open-infrastructure.de
       ansible_user: root
   children:
     ipsec_gateways:
       hosts:
-        gw1:
-          ansible_host: gw1.vpn.dev.cedi.dev
+        fsn1-gw1:
+          ansible_host: fsn1-gw1.vpn.open-infrastructure.de
+          ansible_user: root
+    jitsi:
+      hosts:
+        de-bra-1:
+          ansible_host: de-bra-1.jitsi.rocks
+          ansible_user: root
+        de-wob-1:
+          ansible_host: de-wob-1.jitsi.rocks
+          ansible_user: root
+        de-fsn-1:
+          ansible_host: de-fsn-1.jitsi.rocks
+          ansible_user: root
+        de-fsn-2:
+          ansible_host: de-fsn-2.jitsi.rocks
+          ansible_user: root
+        de-nue-1:
+          ansible_host: de-nue-1.jitsi.rocks
+          ansible_user: root
+        de-nue-2:
+          ansible_host: de-nue-2.jitsi.rocks
+          ansible_user: root
+        fi-hel-2:
+          ansible_host: fi-hel-2.jitsi.rocks
+          ansible_user: root
+        fi-hel-2:
+          ansible_host: fi-hel-2.jitsi.rocks
+          ansible_user: root
+        nl-ams-1:
+          ansible_host: nl-ams-1.jitsi.rocks
+          ansible_user: root
+        us-nyc-1:
+          ansible_host: us-nyc-1.jitsi.rocks
+          ansible_user: root
+        gb-lon-1:
+          ansible_host: gb-lon-1.jitsi.rocks
           ansible_user: root

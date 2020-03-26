@@ -19,7 +19,7 @@
 
   vars:
     letsencrypt_webroot_path: /var/www
-    letsencrypt_email: letsencrypt@cedi.dev
+    letsencrypt_email: letsencrypt@open-infrastructure.de
     letsencrypt_renewal_command_args: '--renew-hook "systemctl restart nginx"'
     letsencrypt_cert_domains:
     - "{{ ansible_host }}"

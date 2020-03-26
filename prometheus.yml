@@ -23,6 +23,8 @@
         - nl-ams-1.jitsi.rocks:9100
         - us-nyc-1.jitsi.rocks:9100
         - gb-lon-1.jitsi.rocks:9100
+        - bbb.jitsi.rocks:9100
+        - bbb1.jitsi.rocks:9100
     grafana_auth:
       anonymous:
         org_name: "Open Infrastructure"

@@ -16,3 +16,9 @@
 [submodule "roles/ansible-grafana"]
 	path = roles/ansible-grafana
 	url = https://github.com/cloudalchemy/ansible-grafana.git
+[submodule "roles/ansible-nginx"]
+	path = roles/ansible-nginx
+	url = git@github.com:open-infrastructure/ansible-nginx.git
+[submodule "roles/ansible-letsencrypt"]
+	path = roles/ansible-letsencrypt
+	url = git@github.com:open-infrastructure/ansible-letsencrypt.git

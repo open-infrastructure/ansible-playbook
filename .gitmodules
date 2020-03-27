@@ -22,12 +22,4 @@
 [submodule "roles/ansible-letsencrypt"]
 	path = roles/ansible-letsencrypt
 	url = git@github.com:open-infrastructure/ansible-letsencrypt.git
-[submodule "roles/ansible-docker-zammad"]
-	path = roles/ansible-docker-zammad
-	url = https://gitlab.com/guardianproject-ops/ansible-docker-zammad.git
-[submodule "roles/ansible-docker-host"]
-	path = roles/ansible-docker-host
-	url = https://gitlab.com/guardianproject-ops/ansible-docker-host.git
-[submodule "roles/ansible-docker-nginx-proxy"]
-	path = roles/ansible-docker-nginx-proxy
-	url = https://gitlab.com/guardianproject-ops/ansible-docker-nginx-proxy.git
+

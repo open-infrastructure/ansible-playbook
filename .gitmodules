@@ -22,4 +22,3 @@
 [submodule "roles/ansible-letsencrypt"]
 	path = roles/ansible-letsencrypt
 	url = git@github.com:open-infrastructure/ansible-letsencrypt.git
-

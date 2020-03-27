@@ -2,7 +2,7 @@
 
 - hosts: jitsi_rocks
   tasks:
-  - name: Enable Firewall
+  - name: Disable Firewall
     ufw:
       state: disabled
       default: allow

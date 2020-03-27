@@ -1,6 +1,0 @@
----
-
-- hosts: jitsi_rocks
-  roles:
-  - ansible-node-exporter
-

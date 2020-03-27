@@ -1,0 +1,10 @@
+---
+
+- hosts: jitsi_rocks
+  tasks:
+  - name: Disable firewall
+    ufw:
+      state: disabled:
+  roles:
+  - ansible-node-exporter
+

@@ -64,6 +64,7 @@
         - gb-lon-1.jitsi.rocks:9100
         - bbb.jitsi.rocks:9100
         - bbb1.jitsi.rocks:9100
+        - tickets.open-infrastructure.de:9100
     grafana_address: "prometheus.open-infrastructure.de"
     grafana_port: 3000
     grafana_auth:

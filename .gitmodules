@@ -22,3 +22,6 @@
 [submodule "roles/ansible-letsencrypt"]
 	path = roles/ansible-letsencrypt
 	url = git@github.com:open-infrastructure/ansible-letsencrypt.git
+[submodule "roles/ansible-role-zammad"]
+	path = roles/ansible-role-zammad
+	url = git@github.com:solutionDrive/ansible-role-zammad.git

@@ -12,6 +12,9 @@
 - name: Call prometheus playbook
   import_playbook: ./prometheus.yml
 
+- name: Call zammad playbook
+  import_playbook: ./zammad.yml
+
 
 
 

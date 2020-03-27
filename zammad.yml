@@ -1,3 +1,7 @@
 - hosts: zammad
   roles:
-  - ansible-role-zammad
+  - ansible-docker-host
+  - ansible-docker-zammad
+  vars:
+    zammad_domain: tickets.open-infrastructure.de
+    zammad_letsencrypt_email: letsencrypt@open-infrastructure.de

@@ -10,12 +10,17 @@
       ufw:
         rule: allow
         port: http
+  - name: Enable blackbox_exporter Port
+    ufw:
+      rule: allow
+      port: '9115'
 
   roles:
   - ansible-prometheus
   - ansible-grafana
   - ansible-letsencrypt
   - ansible-nginx
+  - ansible-blackbox-exporter
 
   vars:
     letsencrypt_webroot_path: /var/www
@@ -46,8 +51,50 @@
     nginx_tls_acme_challenge_root_location: "/var/lib/letsencrypt/"
 
     prometheus_web_external_url: "http://prometheus.open-infrastructure.de"
+    prometheus_scrape_configs:
+      - job_name: "node_exporter"
+        metrics_path: "/metrics"
+        file_sd_configs:
+        - files:
+          - "{{ prometheus_config_dir }}/file_sd/node_exporter.yml"
+      - job_name: blackbox_exporter
+        metrics_path: /probe
+        params:
+          module: [http_2xx]  # Look for a HTTP 200 response.
+        file_sd_configs:
+        - files:
+          - /etc/prometheus/file_sd/blackbox_exporter.yml
+        relabel_configs:
+          - source_labels: [__address__]
+            target_label: __param_target
+          - source_labels: [__param_target]
+            target_label: instance
+          - target_label: __address__
+            replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+
     prometheus_targets:
-      node:
+      blackbox_exporter:
+      - targets:
+        - localhost:9115
+        - https://prometheus.open-infrastructure.de
+        - https://de-bra-1.jitsi.rocks
+        - https://de-wob-1.jitsi.rocks
+        - https://de-fsn-1.jitsi.rocks
+        - https://de-fsn-2.jitsi.rocks
+        - https://de-fsn-3.jitsi.rocks
+        - https://de-nue-1.jitsi.rocks
+        - https://de-nue-2.jitsi.rocks
+        - https://fi-hel-1.jitsi.rocks
+        - https://fi-hel-2.jitsi.rocks
+        - https://nl-ams-1.jitsi.rocks
+        - https://us-nyc-1.jitsi.rocks
+        - https://gb-lon-1.jitsi.rocks
+        - https://bbb.jitsi.rocks
+        - https://bbb1.jitsi.rocks
+        - https://tickets.open-infrastructure.de
+        - http://fsn1-gw1.vpn.open-infrastructure.de:9100
+
+      node_exporter:
       - targets:
         - localhost:9100
         - fsn1-gw1.vpn.open-infrastructure.de:9100
@@ -66,6 +113,7 @@
         - bbb.jitsi.rocks:9100
         - bbb1.jitsi.rocks:9100
         - tickets.open-infrastructure.de:9100
+
     grafana_address: "prometheus.open-infrastructure.de"
     grafana_port: 3000
     grafana_auth:
@@ -77,3 +125,16 @@
     grafana_security:
       admin_user: admin
       admin_password: grafanaSecureAdminPassword1234
+    blackbox_exporter_configuration_modules:
+      icmp_test:
+        prober: icmp
+        timeout: 5s
+        icmp:
+          preferred_ip_protocol: ip6
+      dns_test:
+        prober: dns
+        timeout: 5s
+        dns:
+          preferred_ip_protocol: ip6
+          validate_answer_rrs:
+            fail_if_matches_regexp: [test]

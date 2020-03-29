@@ -1,0 +1,39 @@
+letsencrypt_webroot_path: /var/www
+letsencrypt_email: letsencrypt@open-infrastructure.de
+letsencrypt_renewal_command_args: '--renew-hook "systemctl restart nginx"'
+letsencrypt_cert_domains:
+- "{{ ansible_host }}"
+
+nginx_ssl_trusted_certificate: "/etc/letsencrypt/live/{{ ansible_host }}/chain.pem"
+nginx_ssl_certificate: "/etc/letsencrypt/live/{{ ansible_host }}/fullchain.pem"
+nginx_ssl_certificate_key: "/etc/letsencrypt/live/{{ ansible_host }}/privkey.pem"
+nginx_tls_acme_challenge_root_location: "/var/lib/letsencrypt/"
+
+nginx_vhosts:
+  - listen: "80"
+    server_name: "{{ ansible_host }} www.{{ ansible_host }}"
+    filename: "{{ ansible_host }}.80.conf"
+    return: "301 https://$host$request_uri"
+    state: "present"
+
+  - listen: "443 ssl http2"
+    server_name: "{{ ansible_host }}"
+    state: "present"
+    enable_ssl: true
+    extra_parameters: |
+      location / {
+        #proxy_pass http://prometheus.open-infrastructure.de:9090;
+        proxy_pass http://prometheus.open-infrastructure.de:3000;
+      }
+      proxy_redirect http://prometheus.open-infrastructure.de:3000 https://prometheus.open-infrastructure.de;
+
+grafana_address: "prometheus.open-infrastructure.de"
+grafana_port: 3000
+grafana_auth:
+  anonymous:
+    org_name: "Open Data"
+    org_role: Viewer
+  basic:
+    enabled: true
+
+

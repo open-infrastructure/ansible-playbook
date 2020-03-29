@@ -1,11 +1,17 @@
 ---
 
 - hosts: prometheus
+  vars_files:
+    - vars/prometheus.yml
+    - vars/secrets.yml
+    - vars/grafana.yml
+
   tasks:
   - name: Enable 443
     ufw:
       rule: allow
       port: https
+
   - name: Enable 80
     ufw:
       rule: allow
@@ -23,126 +29,3 @@
   - ansible-nginx
   - ansible-blackbox-exporter
 
-  vars:
-    letsencrypt_webroot_path: /var/www
-    letsencrypt_email: letsencrypt@open-infrastructure.de
-    letsencrypt_renewal_command_args: '--renew-hook "systemctl restart nginx"'
-    letsencrypt_cert_domains:
-    - "{{ ansible_host }}"
-    nginx_vhosts:
-      - listen: "80"
-        server_name: "{{ ansible_host }} www.{{ ansible_host }}"
-        filename: "{{ ansible_host }}.80.conf"
-        return: "301 https://$host$request_uri"
-        state: "present"
-
-      - listen: "443 ssl http2"
-        server_name: "{{ ansible_host }}"
-        state: "present"
-        enable_ssl: true
-        extra_parameters: |
-          location / {
-            proxy_pass http://prometheus.open-infrastructure.de:3000;
-          }
-          proxy_redirect http://prometheus.open-infrastructure.de:3000 https://prometheus.open-infrastructure.de;
-
-    nginx_ssl_trusted_certificate: "/etc/letsencrypt/live/{{ ansible_host }}/chain.pem"
-    nginx_ssl_certificate: "/etc/letsencrypt/live/{{ ansible_host }}/fullchain.pem"
-    nginx_ssl_certificate_key: "/etc/letsencrypt/live/{{ ansible_host }}/privkey.pem"
-    nginx_tls_acme_challenge_root_location: "/var/lib/letsencrypt/"
-
-    prometheus_web_external_url: "http://prometheus.open-infrastructure.de"
-    prometheus_scrape_configs:
-      - job_name: "node_exporter"
-        metrics_path: "/metrics"
-        file_sd_configs:
-        - files:
-          - "{{ prometheus_config_dir }}/file_sd/node_exporter.yml"
-      - job_name: blackbox_exporter
-        metrics_path: /probe
-        params:
-          module: [http_2xx]  # Look for a HTTP 200 response.
-        file_sd_configs:
-        - files:
-          - /etc/prometheus/file_sd/blackbox_exporter.yml
-        relabel_configs:
-          - source_labels: [__address__]
-            target_label: __param_target
-          - source_labels: [__param_target]
-            target_label: instance
-          - target_label: __address__
-            replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
-
-    prometheus_targets:
-      blackbox_exporter:
-      - targets:
-        - localhost:9115
-        - https://prometheus.open-infrastructure.de
-        - https://de-bra-1.jitsi.rocks
-        - https://de-wob-1.jitsi.rocks
-        - https://de-fsn-1.jitsi.rocks
-        - https://de-fsn-2.jitsi.rocks
-        - https://de-fsn-3.jitsi.rocks
-        - https://de-nue-1.jitsi.rocks
-        - https://de-nue-2.jitsi.rocks
-        - https://fi-hel-1.jitsi.rocks
-        - https://fi-hel-2.jitsi.rocks
-        - https://nl-ams-1.jitsi.rocks
-        - https://us-nyc-1.jitsi.rocks
-        - https://gb-lon-1.jitsi.rocks
-        - https://bbb.jitsi.rocks
-        - https://bbb1.jitsi.rocks
-        - https://tickets.open-infrastructure.de
-        - http://fsn1-gw1.vpn.open-infrastructure.de:9100
-
-      node_exporter:
-      - targets:
-        - localhost:9100
-        - fsn1-gw1.vpn.open-infrastructure.de:9100
-        - de-bra-1.jitsi.rocks:9100
-        - de-wob-1.jitsi.rocks:9100
-        - de-fsn-1.jitsi.rocks:9100
-        - de-fsn-2.jitsi.rocks:9100
-        - de-fsn-3.jitsi.rocks:9100
-        - de-nue-1.jitsi.rocks:9100
-        - de-nue-2.jitsi.rocks:9100
-        - fi-hel-1.jitsi.rocks:9100
-        - fi-hel-2.jitsi.rocks:9100
-        - nl-ams-1.jitsi.rocks:9100
-        - us-nyc-1.jitsi.rocks:9100
-        - gb-lon-1.jitsi.rocks:9100
-        - bbb.jitsi.rocks:9100
-        - bbb1.jitsi.rocks:9100
-        - tickets.open-infrastructure.de:9100
-
-    grafana_address: "prometheus.open-infrastructure.de"
-    grafana_port: 3000
-    grafana_auth:
-      anonymous:
-        org_name: "Open Data"
-        org_role: Viewer
-      basic:
-        enabled: true
-    grafana_security:
-      admin_user: admin
-      admin_password: grafanaSecureAdminPassword1234
-    grafana_smtp:
-      host: pain.td00.de
-      user: grafana
-      password: eallyuha83
-      from_address: grafana@open-infrastructure.de
-
-
-    blackbox_exporter_configuration_modules:
-      icmp_test:
-        prober: icmp
-        timeout: 10s
-        icmp:
-          preferred_ip_protocol: ip6
-      dns_test:
-        prober: dns
-        timeout: 10s
-        dns:
-          preferred_ip_protocol: ip6
-          validate_answer_rrs:
-            fail_if_matches_regexp: [test]

@@ -3,17 +3,25 @@ all:
     prometheus:
       ansible_host: prometheus.open-infrastructure.de
       ansible_user: root
+
+    monitor:
+      ansible_host: monitor.open-infrastructure.de
+      ansible_user: root
+
     zammad:
       ansible_host: tickets.open-infrastructure.de
       ansible_user: root
+
   children:
     ipsec_gateways:
       hosts:
         fsn1-gw1:
           ansible_host: fsn1-gw1.vpn.open-infrastructure.de
           ansible_user: root
+
     jitsi_rocks:
       children:
+
         bigbluebutton:
           hosts:
             bbb:
@@ -22,6 +30,7 @@ all:
             bbb1:
               ansible_host: bbb1.jitsi.rocks
               ansible_user: root
+
         jitsi:
           hosts:
             de-bra-1:

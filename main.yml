@@ -12,6 +12,6 @@
 - name: Call prometheus playbook
   import_playbook: ./prometheus.yml
 
-
-
+- name: Call grafana playbook
+  import_playbook: ./grafana.yml
 

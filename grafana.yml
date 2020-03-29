@@ -2,8 +2,8 @@
 
 - hosts: prometheus
   vars_files:
-    - vars/prometheus.yml
     - vars/secrets.yml
+    - vars/grafana.yml
 
   tasks:
   - name: Enable 443
@@ -22,6 +22,7 @@
       port: '9115'
 
   roles:
-  - ansible-prometheus
-  - ansible-blackbox-exporter
+  - ansible-grafana
+  - ansible-letsencrypt
+  - ansible-nginx
 

@@ -1,3 +1,62 @@
+nginx_vhosts:
+  - listen: "80"
+    server_name: "monitor.open-infrastructure.de www.monitor.open-infrastructure.de"
+    filename: "prometheus.80.conf"
+    return: "301 https://prometheus.open-infrastructure.de/$request_uri"
+    state: "present"
+
+  - listen: "80"
+    server_name: "prometheus.open-infrastructure.de www.prometheus.open-infrastructure.de"
+    filename: "monitor.80.conf"
+    return: "301 https://prometheus.open-infrastructure.de/$request_uri"
+    state: "present"
+
+  - listen: "443 ssl http2"
+    server_name: "prometheus.open-infrastructure.de"
+    state: "present"
+    extra_parameters: |
+      location / {
+        proxy_pass http://prometheus.open-infrastructure.de:9090;
+      }
+      ssl_trusted_certificate "/etc/letsencrypt/live/prometheus.open-infrastructure.de/chain.pem";
+      ssl_certificate "/etc/letsencrypt/live/prometheus.open-infrastructure.de/fullchain.pem";
+      ssl_certificate_key "/etc/letsencrypt/live/prometheus.open-infrastructure.de/privkey.pem";
+      location ^~ /.well-known/acme-challenge/ {
+        allow all;
+        root "/var/lib/letsencrypt/";
+        default_type "text/plain";
+        try_files $uri =404;
+      }
+      {{ nginx_tls_parameters }}
+
+
+  - listen: "443 ssl http2"
+    server_name: "monitor.open-infrastructure.de"
+    state: "present"
+    extra_parameters: |
+      location / {
+        proxy_pass http://monitor.open-infrastructure.de:3000;
+      }
+      ssl_trusted_certificate "/etc/letsencrypt/live/monitor.open-infrastructure.de/chain.pem";
+      ssl_certificate "/etc/letsencrypt/live/monitor.open-infrastructure.de/fullchain.pem";
+      ssl_certificate_key "/etc/letsencrypt/live/monitor.open-infrastructure.de/privkey.pem";
+      location ^~ /.well-known/acme-challenge/ {
+        allow all;
+        root "/var/lib/letsencrypt/";
+        default_type "text/plain";
+        try_files $uri =404;
+      }
+      {{ nginx_tls_parameters }}
+
+grafana_address: "monitor.open-infrastructure.de"
+grafana_port: 3000
+grafana_auth:
+  anonymous:
+    org_name: "Open Data"
+    org_role: Viewer
+  basic:
+    enabled: true
+
 blackbox_exporter_configuration_modules:
   icmp_test:
     prober: icmp
@@ -43,6 +102,7 @@ prometheus_targets:
   - targets:
     - localhost:9115
     - https://prometheus.open-infrastructure.de
+    - https://monitor.open-infrastructure.de
     - https://de-bra-1.jitsi.rocks
     - https://de-wob-1.jitsi.rocks
     - https://de-fsn-1.jitsi.rocks
@@ -79,5 +139,6 @@ prometheus_targets:
     - bbb.jitsi.rocks:9100
     - bbb1.jitsi.rocks:9100
     - tickets.open-infrastructure.de:9100
+    - monitor.open-infrastructure.de:9100
 
 

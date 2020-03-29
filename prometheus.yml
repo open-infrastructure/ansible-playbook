@@ -1,10 +1,5 @@
 ---
-
-- hosts: prometheus
-  vars_files:
-    - vars/prometheus.yml
-    - vars/secrets.yml
-
+- hosts: monitor:prometheus
   tasks:
   - name: Enable 443
     ufw:
@@ -21,7 +16,32 @@
       rule: allow
       port: '9115'
 
+- hosts: prometheus
+  vars_files:
+    - vars/prometheus.yml
+    - vars/prometheus_letsencrypt.yml
+    - vars/secrets.yml
+
+  roles:
+  - ansible-letsencrypt
+
+- hosts: monitor
+  vars_files:
+    - vars/prometheus.yml
+    - vars/grafana_letsencrypt.yml
+    - vars/secrets.yml
+
+  roles:
+  - ansible-letsencrypt
+
+- hosts: monitor
+  vars_files:
+    - vars/prometheus.yml
+    - vars/secrets.yml
+
   roles:
   - ansible-prometheus
   - ansible-blackbox-exporter
+  - ansible-grafana
+  - ansible-nginx
 

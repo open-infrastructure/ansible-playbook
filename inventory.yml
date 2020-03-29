@@ -15,8 +15,8 @@ all:
   children:
     ipsec_gateways:
       hosts:
-        fsn1-gw1:
-          ansible_host: fsn1-gw1.vpn.open-infrastructure.de
+        de-fsn1-gw1:
+          ansible_host: de-fsn1-gw1.vpn.open-infrastructure.de
           ansible_user: root
 
     jitsi_rocks:

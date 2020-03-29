@@ -15,7 +15,7 @@ git submodule update --recursive
 
 This is the main playbook to run all roles on all machines
 
-### [base.yml](base.yml0
+### [base.yml](base.yml)
 
 This is the base playbook to setup the hosts
 

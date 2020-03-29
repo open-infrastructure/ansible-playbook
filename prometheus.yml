@@ -2,14 +2,15 @@
 
 - hosts: prometheus
   tasks:
-    - name: Enable 443
-      ufw:
-        rule: allow
-        port: https
-    - name: Enable 80
-      ufw:
-        rule: allow
-        port: http
+  - name: Enable 443
+    ufw:
+      rule: allow
+      port: https
+  - name: Enable 80
+    ufw:
+      rule: allow
+      port: http
+
   - name: Enable blackbox_exporter Port
     ufw:
       rule: allow
@@ -125,6 +126,13 @@
     grafana_security:
       admin_user: admin
       admin_password: grafanaSecureAdminPassword1234
+    grafana_smtp:
+      host: pain.td00.de
+      user: grafana
+      password: eallyuha83
+      from_address: grafana@open-infrastructure.de
+
+
     blackbox_exporter_configuration_modules:
       icmp_test:
         prober: icmp

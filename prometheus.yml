@@ -128,12 +128,12 @@
     blackbox_exporter_configuration_modules:
       icmp_test:
         prober: icmp
-        timeout: 5s
+        timeout: 10s
         icmp:
           preferred_ip_protocol: ip6
       dns_test:
         prober: dns
-        timeout: 5s
+        timeout: 10s
         dns:
           preferred_ip_protocol: ip6
           validate_answer_rrs:

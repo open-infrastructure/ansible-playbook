@@ -74,6 +74,12 @@ blackbox_exporter_configuration_modules:
 prometheus_web_external_url: "http://prometheus.open-infrastructure.de"
 
 prometheus_scrape_configs:
+  - job_name: "docker_exporter"
+    metrics_path: "/metrics"
+    file_sd_configs:
+    - files:
+      - "{{ prometheus_config_dir }}/file_sd/docker_exporter.yml"
+
   - job_name: "node_exporter"
     metrics_path: "/metrics"
     file_sd_configs:
@@ -98,6 +104,10 @@ prometheus_scrape_configs:
         replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
 
 prometheus_targets:
+  docker_exporter:
+  - targets:
+    - gb-lon-1.jitsi.rocks:9323
+
   blackbox_exporter:
   - targets:
     - localhost:9115
@@ -118,12 +128,11 @@ prometheus_targets:
     - https://bbb.jitsi.rocks
     - https://bbb1.jitsi.rocks
     - https://tickets.open-infrastructure.de
-    - http://fsn1-gw1.vpn.open-infrastructure.de:9100
 
   node_exporter:
   - targets:
     - localhost:9100
-    - fsn1-gw1.vpn.open-infrastructure.de:9100
+    - de-fsn1-gw1.vpn.open-infrastructure.de:9100
     - de-bra-1.jitsi.rocks:9100
     - de-wob-1.jitsi.rocks:9100
     - de-fsn-1.jitsi.rocks:9100

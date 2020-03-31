@@ -7,6 +7,9 @@
       state: disabled
       default: allow
 
+  - name: Enable docker exporter
+    import_tasks: tasks/docker_exporter.yml
+
   roles:
   - ansible-node-exporter
 

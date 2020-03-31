@@ -110,9 +110,6 @@ prometheus_targets:
 
   blackbox_exporter:
   - targets:
-    - localhost:9115
-    - https://prometheus.open-infrastructure.de
-    - https://monitor.open-infrastructure.de
     - https://de-bra-1.jitsi.rocks
     - https://de-wob-1.jitsi.rocks
     - https://de-fsn-1.jitsi.rocks
@@ -125,7 +122,6 @@ prometheus_targets:
     - https://nl-ams-1.jitsi.rocks
     - https://us-nyc-1.jitsi.rocks
     - https://gb-lon-1.jitsi.rocks
-    - https://bbb.jitsi.rocks
     - https://bbb1.jitsi.rocks
     - https://tickets.open-infrastructure.de
 

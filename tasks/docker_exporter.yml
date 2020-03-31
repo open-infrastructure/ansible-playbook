@@ -1,0 +1,10 @@
+---
+
+- name: configure metrics
+  template:
+    src: templates/docker_daemon.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: '0644'
+

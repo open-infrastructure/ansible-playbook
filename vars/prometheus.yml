@@ -145,5 +145,7 @@ prometheus_targets:
     - bbb1.jitsi.rocks:9100
     - tickets.open-infrastructure.de:9100
     - monitor.open-infrastructure.de:9100
+    - auth.open-infrastructure.de:9100
+    - sso.open-infrastructure.de:9100
 
 

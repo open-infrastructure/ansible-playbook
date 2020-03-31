@@ -1,6 +1,0 @@
----
-
-- hosts: fsn1-gw1
-  roles:
-  - ansible-base
-  - ansible-sshd

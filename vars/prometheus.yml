@@ -106,7 +106,14 @@ prometheus_scrape_configs:
 prometheus_targets:
   docker_exporter:
   - targets:
-    - gb-lon-1.jitsi.rocks:9323
+    - de-bra-1.jitsi.rocks:9417
+    - de-wob-1.jitsi.rocks:9417
+    - de-fsn-1.jitsi.rocks:9417
+    - fi-hel-1.jitsi.rocks:9417
+    - fi-hel-2.jitsi.rocks:9417
+    - nl-ams-1.jitsi.rocks:9417
+    - us-nyc-1.jitsi.rocks:9417
+    - gb-lon-1.jitsi.rocks:9417
 
   blackbox_exporter:
   - targets:
@@ -138,6 +145,3 @@ prometheus_targets:
     - tickets.open-infrastructure.de:9100
     - monitor.open-infrastructure.de:9100
     - auth.open-infrastructure.de:9100
-    - sso.open-infrastructure.de:9100
-
-

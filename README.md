@@ -11,22 +11,39 @@ git submodule update --recursive
 
 ## Playbooks
 
-### [main.yml](main.yml)
-
-This is the main playbook to run all roles on all machines
-
 ### [base.yml](base.yml)
 
 This is the base playbook to setup the hosts
+
+```
+ansible-playbook prometheus.yml -i inventory/devops.yml --vault-password-file secret.txt
+```
+
 
 ### [ipsec_gateway.yml](ipsec_gateway.yml)
 
 The IPsec playbook to setup the VPN infrastructure
 
+```
+ansible-playbook prometheus.yml -i inventory/vpn.yml --vault-password-file secret.txt
+```
+
+
 ### [jitsi.yml](jitsi.yml)
 
 This playbook automates the [jitsi.rocks](https://jitsi.rocks) infrastructure (or at least the monitoring)
 
-### [prometheus.yml](prometheus.yml)
+```
+ansible-playbook prometheus.yml -i inventory/jitsirocks.yml --vault-password-file secret.txt
+```
+
+
+### [monitoring.yml](monitoring.yml)
 
 This playbook deploys the prometheus based monitoring
+
+```
+ansible-playbook monitoring.yml -i inventory/devops.yml --vault-password-file secret.txt
+```
+
+

@@ -1,0 +1,18 @@
+all:
+  hosts:
+    prometheus:
+      ansible_host: prometheus.open-infrastructure.de
+      ansible_user: root
+
+    monitor:
+      ansible_host: monitor.open-infrastructure.de
+      ansible_user: root
+
+    zammad:
+      ansible_host: tickets.open-infrastructure.de
+      ansible_user: root
+
+    auth:
+      ansible_host: auth.open-infrastructure.de
+      ansible_user: root
+

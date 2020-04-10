@@ -1,0 +1,10 @@
+all:
+  children:
+    vpn:
+      children:
+        gateways:
+          hosts:
+            de-fsn1-gw1:
+              ansible_host: de-fsn1-gw1.vpn.open-infrastructure.de
+              ansible_user: root
+

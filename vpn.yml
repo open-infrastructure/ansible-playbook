@@ -1,6 +1,10 @@
 ---
 
 - hosts: vpn
+  vars_files:
+    - vars/users.yml
+    - vars/software.yml
+
   roles:
   - ansible-base
   - ansible-sshd

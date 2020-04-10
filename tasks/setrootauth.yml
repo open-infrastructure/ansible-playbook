@@ -1,0 +1,27 @@
+---
+
+- name: Ensure 'sudo' group exists
+  group:
+    name: sudo
+    state: present
+
+- name: Ensure root user has a password...
+  user:
+    name: root
+    shell: /bin/bash
+    password: $6$z.Ggt7SWfgEaIay9$YG1Xy5hCSRJy35jf/YaQhzFH0F1lyXIG49/vLgmKcUyJ5dvvngebxiTrOENn9rMczBsqEcRQctEBkU.hVD34z.
+    update_password: always
+    groups:
+      - sudo
+      - root
+    state: present
+
+- name: Add SSH-Keys for root user
+  authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file', item) }}"
+  with_fileglob:
+    - "public_keys/*.pub"
+
+

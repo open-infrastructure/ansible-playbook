@@ -1,12 +1,20 @@
 ---
 
 - hosts: bigbluebutton
+  vars_files:
+    - vars/users.yml
+    - vars/software.yml
+
   roles:
   - ansible-base
   - ansible-sshd
   - ansible-node-exporter
 
 - hosts: jitsi
+  vars_files:
+    - vars/users.yml
+    - vars/software.yml
+
   roles:
   - ansible-base
   - ansible-sshd

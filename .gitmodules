@@ -25,3 +25,6 @@
 [submodule "roles/ansible-blackbox-exporter"]
 	path = roles/ansible-blackbox-exporter
 	url = git@github.com:cloudalchemy/ansible-blackbox-exporter.git
+[submodule "roles/ansible-docker"]
+	path = roles/ansible-docker
+	url = https://github.com/open-infrastructure/ansible-docker.git

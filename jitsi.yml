@@ -2,14 +2,11 @@
 
 - hosts: jitsi_rocks
   tasks:
-  - name: Disable Firewall
-    ufw:
-      state: disabled
-      default: allow
-
   - name: Enable docker exporter
     import_tasks: tasks/docker_exporter.yml
 
   roles:
+  - ansible-base
+  - ansible-sshd
   - ansible-node-exporter
 

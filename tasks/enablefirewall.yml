@@ -1,0 +1,35 @@
+---
+
+- name: Allow SSH
+  ufw:
+    rule: allow
+    port: ssh
+    proto: tcp
+
+- name: Ratelimit SSH
+  ufw:
+    rule: limit
+    port: ssh
+    proto: tcp
+
+- name: Enable HTTPS
+  ufw:
+    rule: allow
+    port: https
+
+- name: Enable HTTP
+  ufw:
+    rule: allow
+    port: http
+
+- name: Enable node_exporter
+  ufw:
+    rule: allow
+    port: '9100'
+
+- name: Enable Firewall
+  ufw:
+    state: enabled
+    default: deny
+    logging: 'on'
+

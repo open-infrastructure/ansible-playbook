@@ -1,0 +1,12 @@
+---
+
+- hosts: zammad:auth
+  tasks:
+  - name: Disable Firewall
+    become: true
+    ufw:
+      state: disabled
+      default: allow
+      logging: 'off'
+
+

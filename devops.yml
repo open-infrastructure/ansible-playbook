@@ -1,6 +1,6 @@
 ---
 
-- hosts: vpn
+- hosts: devops
   roles:
   - ansible-base
   - ansible-sshd
@@ -11,7 +11,11 @@
     import_tasks: tasks/enablefirewall.yml
     become: true
 
-- hosts: ipsec_gateways
-  roles:
-    - ansible-strongswan
+# Tickets
+- name: Call tickets playbook
+  import_playbook: ./tickets.yml
+
+# Monitoring
+- name: Call monitoring playbook
+  import_playbook: ./monitoring.yml
 

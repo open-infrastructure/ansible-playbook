@@ -12,6 +12,12 @@ all:
               ansible_host: bbb1.jitsi.rocks
               ansible_user: root
 
+        dev_jitsi:
+          hosts:
+            dev:
+              ansible_host: jitsidev.jitsi.rocks
+              ansible_user: root
+
         jitsi:
           hosts:
             de-bra-1:

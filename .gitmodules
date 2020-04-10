@@ -28,3 +28,6 @@
 [submodule "roles/ansible-docker"]
 	path = roles/ansible-docker
 	url = https://github.com/open-infrastructure/ansible-docker.git
+[submodule "roles/ansible-jitsi"]
+	path = roles/ansible-jitsi
+	url = https://github.com/open-infrastructure/ansible-jitsi.git

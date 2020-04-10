@@ -1,0 +1,17 @@
+---
+
+- hosts: dev_jitsi
+
+  roles:
+  - ansible-base
+  - ansible-sshd
+  - ansible-node-exporter
+  - ansible-docker
+  - ansible-letsencrypt
+  - ansible-jitsi
+  vars:
+    letsencrypt_webroot_path: /var/www
+    letsencrypt_email: "{{ ansible_host }}@maint.jitsi.rocks"
+    letsencrypt_renewal_command_args: '--renew-hook "cp -r /etc/letsencrypt/* /root/.jitsi-meet-cfg/web/letsencrypt/"'
+    letsencrypt_cert_domains:
+      - "{{ ansible_host }}"

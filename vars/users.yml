@@ -1,6 +1,6 @@
 ---
 
-users:
+base_system_users:
   - name: cedi
     shell: /bin/bash
     password: $6$VAsB3DtoecS8YYBK$bahGo8H0bM1E7n4L1loTk2mLa1Zv59KN6PnKlpzjwpCtRMRHvACvedxjtdE6nTOOSMWkO9AoFEq0WlOFgFPEq0

@@ -30,10 +30,10 @@ base_system_packages:
   - ca-certificates
   - gnupg-agent
   - software-properties-common
-  - tilix
+  - python-backports.ssl-match-hostname
 
 base_pip_packages:
   - docker
 
 base_pip2_packages:
-  - docker-py
+  - docker

@@ -1,28 +1,23 @@
 ---
 
-- hosts: bigbluebutton
+- hosts: jitsi_dev
   vars_files:
     - vars/users.yml
     - vars/software.yml
     - vars/secrets.yml
 
-  roles:
-  - ansible-base
-  - ansible-sshd
-  - ansible-node-exporter
-
-- hosts: jitsi
-  vars_files:
-    - vars/users.yml
-    - vars/software.yml
+  tasks:
+  - name: fix docker monitoring
+    import_tasks: roles/ansible-docker/tasks/monitoring.yml
 
   roles:
-  - ansible-base
-  - ansible-sshd
-  - ansible-node-exporter
-  - ansible-docker
-  - ansible-letsencrypt
+      #  - ansible-base
+      #  - ansible-sshd
+      #  - ansible-node-exporter
+      #  - ansible-docker
+      #  - ansible-letsencrypt
   - ansible-jitsi
+
   vars:
     letsencrypt_webroot_path: /var/www
     letsencrypt_email: "{{ ansible_host }}@maint.jitsi.rocks"

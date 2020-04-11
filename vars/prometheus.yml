@@ -114,6 +114,7 @@ prometheus_targets:
     - nl-ams-1.jitsi.rocks:9417
     - us-nyc-1.jitsi.rocks:9417
     - gb-lon-1.jitsi.rocks:9417
+    - jitsidev.jitsi.rocks:9417
 
   blackbox_exporter:
   - targets:
@@ -125,6 +126,7 @@ prometheus_targets:
     - https://nl-ams-1.jitsi.rocks
     - https://us-nyc-1.jitsi.rocks
     - https://gb-lon-1.jitsi.rocks
+    - https://jitsidev.jitsi.rocks
     - https://bbb1.jitsi.rocks
     - https://tickets.open-infrastructure.de
 
@@ -140,6 +142,7 @@ prometheus_targets:
     - nl-ams-1.jitsi.rocks:9100
     - us-nyc-1.jitsi.rocks:9100
     - gb-lon-1.jitsi.rocks:9100
+    - jitsidev.jitsi.rocks:9100
     - bbb.jitsi.rocks:9100
     - bbb1.jitsi.rocks:9100
     - tickets.open-infrastructure.de:9100

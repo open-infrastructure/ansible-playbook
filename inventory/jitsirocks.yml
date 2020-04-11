@@ -9,6 +9,12 @@ all:
           ansible_host: bbb1.jitsi.rocks
           ansible_user: root
 
+    jitsi_dev:
+      hosts:
+        jitsidev:
+          ansible_host: jitsidev2.jitsi.rocks
+          ansible_user: root
+
     jitsi:
       hosts:
         de-wob-1:

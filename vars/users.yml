@@ -2,8 +2,8 @@
 
 base_system_users:
   - name: cedi
+    password: $6$CS3ZSrWWeVjN4eqD$n7GFQEk0e3Z5.zN.crHQS9kfGsmjkOG3Mdm.zN3IFRC6h2/YyTuBoc3wRus1no2sxFT2g0lFYOYDawrmgVzVO.
     shell: /bin/bash
-    password: $6$VAsB3DtoecS8YYBK$bahGo8H0bM1E7n4L1loTk2mLa1Zv59KN6PnKlpzjwpCtRMRHvACvedxjtdE6nTOOSMWkO9AoFEq0WlOFgFPEq0
     groups:
       - sudo
       - docker
@@ -12,8 +12,8 @@ base_system_users:
     nvim: https://github.com/cedi/vim-config.git
 
   - name: thies
+    password: $6$pvsmIXJIs95Q41sP$QCIWZzreJ9jcsXLDPKBcI8CMOZzRLhBdtaExvC0D3w7j3ZspjySVuSyrD0Zl/EHfh2v6.yBuh1A83Pq/m8fk5/
     shell: /bin/bash
-    password: $6$VAsB3DtoecS8YYBK$bahGo8H0bM1E7n4L1loTk2mLa1Zv59KN6PnKlpzjwpCtRMRHvACvedxjtdE6nTOOSMWkO9AoFEq0WlOFgFPEq0
     groups:
       - sudo
       - docker

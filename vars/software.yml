@@ -1,6 +1,7 @@
 ---
 
 base_system_packages:
+  - neovim
   - tmux
   - zsh
   - mosh
@@ -31,6 +32,7 @@ base_system_packages:
   - gnupg-agent
   - software-properties-common
   - python-backports.ssl-match-hostname
+  - make
 
 base_pip_packages:
   - docker

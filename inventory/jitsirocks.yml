@@ -17,8 +17,8 @@ all:
 
     jitsi:
       hosts:
-        de-wob-1:
-          ansible_host: de-wob-1.jitsi.rocks
+        de-wob-2:
+          ansible_host: de-wob-2.jitsi.rocks
           ansible_user: root
         us-nyc-1:
           ansible_host: us-nyc-1.jitsi.rocks

@@ -1,6 +1,6 @@
 ---
 
-- hosts: jitsi_dev
+- hosts: de-wob-2
   vars_files:
     - vars/users.yml
     - vars/software.yml

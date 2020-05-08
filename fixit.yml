@@ -11,12 +11,12 @@
     import_tasks: roles/ansible-docker/tasks/monitoring.yml
 
   roles:
-      #  - ansible-base
-      #  - ansible-sshd
-      #  - ansible-node-exporter
-      #  - ansible-docker
-      #  - ansible-letsencrypt
-  - ansible-jitsi
+    - ansible-base
+    - ansible-sshd
+    - ansible-node-exporter
+    - ansible-docker
+    - ansible-letsencrypt
+    - ansible-jitsi
 
   vars:
     letsencrypt_webroot_path: /var/www

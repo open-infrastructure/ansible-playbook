@@ -41,5 +41,6 @@ all:
         gb-lon-1:
           ansible_host: gb-lon-1.jitsi.rocks
           ansible_user: root
-
-
+        custom02:
+            ansible_host: custom02.jitsi.rocks
+            ansible_user: root

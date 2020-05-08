@@ -1,6 +1,6 @@
 ---
 
-- hosts: de-wob-2
+- hosts: custom02 
   vars_files:
     - vars/users.yml
     - vars/software.yml

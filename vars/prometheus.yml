@@ -74,13 +74,21 @@ blackbox_exporter_configuration_modules:
 prometheus_web_external_url: "http://prometheus.open-infrastructure.de"
 
 prometheus_scrape_configs:
-  - job_name: "docker_exporter"
+  - job_name: docker_exporter
     metrics_path: "/metrics"
     file_sd_configs:
     - files:
       - "{{ prometheus_config_dir }}/file_sd/docker_exporter.yml"
 
-  - job_name: "node_exporter"
+  - job_name: gitlab
+    metrics_path: "/-/metrics"
+    params:
+      token: [tc_RERu_L51BHf6yQ-Tt]
+    file_sd_configs:
+    - files:
+      - "{{ prometheus_config_dir }}/file_sd/gitlab.yml"
+
+  - job_name: node_exporter
     metrics_path: "/metrics"
     file_sd_configs:
     - files:
@@ -104,6 +112,10 @@ prometheus_scrape_configs:
         replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
 
 prometheus_targets:
+  gitlab:
+  - targets:
+    - git.open-infrastructure.de
+
   docker_exporter:
   - targets:
     - de-bra-1.jitsi.rocks:9417
@@ -127,6 +139,7 @@ prometheus_targets:
     - https://gb-lon-1.jitsi.rocks
     - https://bbb.jitsi.rocks
     - https://tickets.open-infrastructure.de
+    - https://git.open-infrastructure.de
 
   node_exporter:
   - targets:

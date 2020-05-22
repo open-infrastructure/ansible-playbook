@@ -11,4 +11,3 @@
   - ansible-base
   - ansible-sshd
   - ansible-node-exporter
-  - ansible-389ds

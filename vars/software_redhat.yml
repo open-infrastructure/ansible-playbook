@@ -12,9 +12,17 @@ base_system_packages:
   - python3
   - python3-pip
   - python2
+  - python-pip
   - graphviz
   - sudo
   - iperf3
   - ca-certificates
   - make
   - epel-release
+  - java-1.8.0-openjdk
+
+base_pip_packages:
+  - docker
+
+base_pip2_packages:
+  - docker

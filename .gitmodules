@@ -31,6 +31,3 @@
 [submodule "roles/ansible-jitsi"]
 	path = roles/ansible-jitsi
 	url = https://github.com/open-infrastructure/ansible-jitsi.git
-[submodule "roles/ansible-389ds"]
-	path = roles/ansible-389ds
-	url = git@github.com:LennertMertens/ansible-role-389ds.git

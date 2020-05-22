@@ -1,14 +1,14 @@
 ---
 
-- hosts: custom02 
+- hosts: custom02
   vars_files:
     - vars/users.yml
     - vars/software.yml
     - vars/secrets.yml
 
   tasks:
-  - name: fix docker monitoring
-    import_tasks: roles/ansible-docker/tasks/monitoring.yml
+  - name: Setup Monitoring
+    import_tasks: ./roles/ansible-docker/tasks/monitoring.yml
 
   roles:
     - ansible-base
@@ -19,8 +19,4 @@
     - ansible-jitsi
 
   vars:
-    letsencrypt_webroot_path: /var/www
-    letsencrypt_email: "{{ ansible_host }}@maint.jitsi.rocks"
-    letsencrypt_renewal_command_args: '--renew-hook "cp -r /etc/letsencrypt/* /root/.jitsi-meet-cfg/web/letsencrypt/"'
-    letsencrypt_cert_domains:
-      - "{{ ansible_host }}"
+    jitsi_manual_docker_build: false

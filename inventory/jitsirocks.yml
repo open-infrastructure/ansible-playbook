@@ -5,9 +5,6 @@ all:
         bbb:
           ansible_host: bbb.jitsi.rocks
           ansible_user: root
-        bbb1:
-          ansible_host: bbb1.jitsi.rocks
-          ansible_user: root
 
     jitsi_dev:
       hosts:

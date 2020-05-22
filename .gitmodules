@@ -1,9 +1,9 @@
 [submodule "roles/ansible-sshd"]
 	path = roles/ansible-sshd
-	url = git@github.com:open-infrastructure/ansible-base.git
+	url = git@git.open-infrastructure.de:ansible/ansible-sshd.git
 [submodule "roles/ansible-base"]
 	path = roles/ansible-base
-	url = git@github.com:open-infrastructure/ansible-base.git
+	url = git@git.open-infrastructure.de:ansible/ansible-base.git
 [submodule "roles/ansible-strongswan"]
 	path = roles/ansible-strongswan
 	url = git@github.com:open-infrastructure/ansible-strongswan.git
@@ -31,3 +31,6 @@
 [submodule "roles/ansible-jitsi"]
 	path = roles/ansible-jitsi
 	url = https://github.com/open-infrastructure/ansible-jitsi.git
+[submodule "roles/ansible-389ds"]
+	path = roles/ansible-389ds
+	url = git@github.com:LennertMertens/ansible-role-389ds.git

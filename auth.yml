@@ -3,11 +3,12 @@
 - hosts: auth
   vars_files:
     - vars/users.yml
-    - vars/software_redhat.yml
+    - vars/software.yml
     - vars/secrets.yml
-    - vars/ldap.yml
+    - vars/auth.yml
 
   roles:
-  - ansible-base
-  - ansible-sshd
-  - ansible-node-exporter
+      #  - ansible-base
+      #  - ansible-sshd
+      #  - ansible-node-exporter
+  - ansible-ldap

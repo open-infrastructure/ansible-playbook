@@ -7,7 +7,6 @@ base_system_users:
     groups:
       - sudo
       - docker
-      - wheel
     public_keys: https://github.com/cedi.keys
     dotfiles: https://github.com/cedi/dotfiles.git
     nvim: https://github.com/cedi/vim-config.git
@@ -18,5 +17,4 @@ base_system_users:
     groups:
       - sudo
       - docker
-      - wheel
     public_keys: https://github.com/td00.keys

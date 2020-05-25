@@ -1,0 +1,5 @@
+---
+
+dirsrv_base_dn: "dc=open-infrastructure,dc=de"
+dirsrv_root_dn: "ou=admin,dc=open-infrastructure,dc=de"
+dirsrv_backup_dir: "/tmp/ldap_backup"

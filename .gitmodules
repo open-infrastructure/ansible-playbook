@@ -31,3 +31,6 @@
 [submodule "roles/ansible-jitsi"]
 	path = roles/ansible-jitsi
 	url = https://github.com/open-infrastructure/ansible-jitsi.git
+[submodule "roles/ansible-ldap"]
+	path = roles/ansible-ldap
+	url = git@git.open-infrastructure.de:ansible/ansible-ldap.git

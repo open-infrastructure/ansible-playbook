@@ -8,7 +8,7 @@
     - vars/auth.yml
 
   roles:
-      #  - ansible-base
-      #  - ansible-sshd
-      #  - ansible-node-exporter
+  - ansible-base
+  - ansible-sshd
+  - ansible-node-exporter
   - ansible-ldap

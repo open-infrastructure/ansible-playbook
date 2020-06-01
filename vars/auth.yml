@@ -1,5 +1,30 @@
 ---
 
+# Letsencrypt Settings
+letsencrypt_webroot_path: /var/www
+letsencrypt_email: letsencrypt@open-infrastructure.de
+letsencrypt_renewal_command_args: '--renew-hook "systemctl restart keycloak"'
+letsencrypt_cert_domains:
+- "auth.open-infrastructure.de"
+
+
+# LDAP Settings
 dirsrv_base_dn: "dc=open-infrastructure,dc=de"
 dirsrv_root_dn: "ou=admin,dc=open-infrastructure,dc=de"
 dirsrv_backup_dir: "/tmp/ldap_backup"
+
+
+# Keycloak settings
+keycloak_version: 10.0.1
+keycloak_http_port: 80
+keycloak_https_port: 443
+
+keycloak_force_install: true
+keycloak_tls_files_on_target: true
+keycloak_configure_firewall: false
+
+keycloak_tls_cert: /etc/letsencrypt/live/auth.open-infrastructure.de/cert.pem
+keycloak_tls_key: /etc/letsencrypt/live/auth.open-infrastructure.de/privkey.pem
+
+keycloak_service_user: root
+keycloak_service_group: root

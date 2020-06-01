@@ -48,6 +48,7 @@ nginx_vhosts:
       }
       {{ nginx_tls_parameters }}
 
+# Grafana config
 grafana_address: "monitor.open-infrastructure.de"
 grafana_port: 3000
 grafana_auth:
@@ -56,6 +57,8 @@ grafana_auth:
     org_role: Viewer
   basic:
     enabled: true
+
+# prometheus config
 
 blackbox_exporter_configuration_modules:
   icmp_test:

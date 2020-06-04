@@ -27,6 +27,8 @@
       port: '9115'
 
   roles:
+  - ansible-base
+  - ansible-sshd
   - ansible-prometheus
   - ansible-blackbox-exporter
   - ansible-grafana

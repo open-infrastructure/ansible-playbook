@@ -19,7 +19,12 @@
 - name: Call tickets playbook
   import_playbook: ./tickets.yml
 
+# auth
+- name: Call auth playbook
+  import_playbook: ./auth.yml
+
 # Monitoring
 - name: Call monitoring playbook
   import_playbook: ./monitoring.yml
+
 

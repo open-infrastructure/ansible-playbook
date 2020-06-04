@@ -20,4 +20,11 @@ all:
             monitor:
               ansible_host: monitor.open-infrastructure.de
               ansible_user: root
+          children:
+            elk:
+              hosts:
+                kibana:
+                  ansible_host: kibana.open-infrastructure.de
+                  ansible_user: root
+
 

@@ -1,0 +1,14 @@
+---
+
+# Main
+- hosts: elk
+  vars_files:
+    - vars/secrets.yml
+    - vars/software.yml
+    - vars/users.yml
+
+  roles:
+  - ansible-base
+  - ansible-sshd
+  - ansible-node-exporter
+

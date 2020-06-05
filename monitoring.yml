@@ -17,6 +17,8 @@
 # Main
 - hosts: monitor
   vars_files:
+    - vars/users.yml
+    - vars/software.yml
     - vars/prometheus.yml
     - vars/secrets.yml
 

@@ -1,13 +1,13 @@
 nginx_vhosts:
   - listen: "80"
     server_name: "monitor.open-infrastructure.de www.monitor.open-infrastructure.de"
-    filename: "prometheus.80.conf"
-    return: "301 https://prometheus.open-infrastructure.de/$request_uri"
+    filename: "monitor.80.conf"
+    return: "301 https://monitor.open-infrastructure.de/$request_uri"
     state: "present"
 
   - listen: "80"
     server_name: "prometheus.open-infrastructure.de www.prometheus.open-infrastructure.de"
-    filename: "monitor.80.conf"
+    filename: "prometheus.80.conf"
     return: "301 https://prometheus.open-infrastructure.de/$request_uri"
     state: "present"
 
@@ -50,6 +50,7 @@ nginx_vhosts:
 
 # Grafana config
 grafana_address: "monitor.open-infrastructure.de"
+grafana_url: "https://monitor.open-infrastructure.de/"
 grafana_port: 3000
 grafana_auth:
   anonymous:
@@ -57,6 +58,16 @@ grafana_auth:
     org_role: Viewer
   basic:
     enabled: true
+  generic_oauth:
+    client_id: grafana
+    client_secret: 12f953a9-9102-4945-864f-14fd384cd5f0
+    name: SSO
+    scopes: email
+    auth_url: https://auth.open-infrastructure.de/auth/realms/master/protocol/openid-connect/auth
+    token_url: https://auth.open-infrastructure.de/auth/realms/master/protocol/openid-connect/token
+    api_url: https://auth.open-infrastructure.de/auth/realms/master/protocol/openid-connect/userinfo
+    allow_sign_up: true
+
 
 # prometheus config
 
